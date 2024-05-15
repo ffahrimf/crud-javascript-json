@@ -1,0 +1,28 @@
+{
+  "stuff": [
+    {
+      "id": "95d1",
+      "name": "Table",
+      "price": "13.00",
+      "category": "Furniture"
+    },
+    {
+      "id": "903a",
+      "name": "Chair",
+      "price": "12.00",
+      "category": "Furniture"
+    },
+    {
+      "id": "0ee3",
+      "name": "Mirror",
+      "price": "24.00",
+      "category": "Furniture"
+    },
+    {
+      "id": "69ff",
+      "name": "Bottle",
+      "price": "4.00",
+      "category": "Furniture"
+    }
+  ]
+}
