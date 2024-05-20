@@ -1,10 +1,10 @@
 {
   "stuff": [
     {
-      "id": "95d1",
       "name": "Table",
       "price": "13.00",
-      "category": "Furniture"
+      "category": "Furniture",
+      "id": "95d1"
     },
     {
       "id": "903a",
@@ -19,10 +19,10 @@
       "category": "Furniture"
     },
     {
-      "id": "69ff",
-      "name": "Bottle",
-      "price": "4.00",
-      "category": "Furniture"
+      "id": "76f5",
+      "name": "Laptop",
+      "price": "442.00",
+      "category": "Electronic"
     }
   ]
 }

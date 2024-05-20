@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table with Pagination and Search</title>
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <style>
+      .pagination-button:hover {
+        background-color: #e2e8f0;
+      }
+      .active-page {
+        background-color: #1a202c;
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 p-6">
+    <div class="container mx-auto bg-white shadow-md rounded p-6">
+      <div class="flex justify-between items-center mb-4">
+        <input
+          id="searchInput"
+          type="text"
+          class="border p-2 rounded w-1/3"
+          placeholder="Search..."
+        />
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-b">Name</th>
+              <th class="py-2 px-4 border-b">Age</th>
+              <th class="py-2 px-4 border-b">Email</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Rows will be dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+      <div class="flex justify-between items-center mt-4">
+        <div>
+          <button
+            id="prevPage"
+            class="pagination-button py-2 px-4 border rounded mr-2"
+          >
+            Previous
+          </button>
+          <button
+            id="nextPage"
+            class="pagination-button py-2 px-4 border rounded"
+          >
+            Next
+          </button>
+        </div>
+        <div id="pageIndicator" class="text-gray-600"></div>
+      </div>
+    </div>
+
+    <script>
+      const data = [
+        { name: "John Doe", age: 28, email: "john@example.com" },
+        { name: "Jane Smith", age: 34, email: "jane@example.com" },
+        { name: "Sam Brown", age: 22, email: "sam@example.com" },
+        { name: "Nancy Johnson", age: 45, email: "nancy@example.com" },
+        { name: "Alice Martin", age: 29, email: "alice@example.com" },
+        { name: "Bob Lee", age: 32, email: "bob@example.com" },
+        { name: "Michael Clark", age: 41, email: "michael@example.com" },
+        { name: "Laura Davis", age: 38, email: "laura@example.com" },
+        { name: "Gary Wilson", age: 26, email: "gary@example.com" },
+        { name: "Linda Taylor", age: 37, email: "linda@example.com" },
+        { name: "James Anderson", age: 50, email: "james@example.com" },
+        { name: "Patricia Thomas", age: 31, email: "patricia@example.com" },
+      ];
+
+      let currentPage = 1;
+      const rowsPerPage = 5;
+
+      function renderTable(data, page = 1) {
+        const tableBody = document.getElementById("tableBody");
+        tableBody.innerHTML = "";
+
+        const start = (page - 1) * rowsPerPage;
+        const end = page * rowsPerPage;
+        const paginatedData = data.slice(start, end);
+
+        paginatedData.forEach((row) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+          <td class="py-2 px-4 border-b">${row.name}</td>
+          <td class="py-2 px-4 border-b">${row.age}</td>
+          <td class="py-2 px-4 border-b">${row.email}</td>
+        `;
+          tableBody.appendChild(tr);
+        });
+
+        document.getElementById(
+          "pageIndicator"
+        ).textContent = `Page ${page} of ${Math.ceil(
+          data.length / rowsPerPage
+        )}`;
+      }
+
+      function handleSearch(event) {
+        const searchTerm = event.target.value.toLowerCase();
+        const filteredData = data.filter(
+          (row) =>
+            row.name.toLowerCase().includes(searchTerm) ||
+            row.age.toString().includes(searchTerm) ||
+            row.email.toLowerCase().includes(searchTerm)
+        );
+        currentPage = 1;
+        renderTable(filteredData, currentPage);
+      }
+
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", handleSearch);
+      document.getElementById("prevPage").addEventListener("click", () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderTable(data, currentPage);
+        }
+      });
+      document.getElementById("nextPage").addEventListener("click", () => {
+        if (currentPage < Math.ceil(data.length / rowsPerPage)) {
+          currentPage++;
+          renderTable(data, currentPage);
+        }
+      });
+
+      renderTable(data, currentPage);
+    </script>
+  </body>
+</html>

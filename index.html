@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+
     <style>
       table,
       th,
@@ -15,45 +21,158 @@
     </style>
   </head>
   <body>
-    <input
-      type="text"
-      placeholder="Name of stuff"
-      id="name"
-      style="margin-top: 20px"
-    />
-    <input
-      type="number"
-      placeholder="Price of stuff"
-      id="price"
-      style="margin-top: 20px"
-    />
-    <select id="category">
-      <option value="Electronic">Electronic</option>
-      <option value="Furniture">Furniture</option>
-    </select>
-    <button type="button" onclick="SaveStuff()">Save</button>
-    <table style="margin-top: 20px">
-      <thead>
-        <tr>
-          <th>No.</th>
-          <th>Name</th>
-          <th>Category</th>
-          <th>Price</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody id="result">
-        <tr>
-          <td>1</td>
-          <td>Wardrobe</td>
-          <td>Furniture</td>
-          <td>100.00</td>
-          <td>
-            <button type="button">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <section class="container mx-auto">
+      <input
+        class="px-4 py-2 bg-white border border-gray-300 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+        type="text"
+        placeholder="Name of stuff"
+        id="name"
+        style="margin-top: 20px"
+      />
+
+      <input
+        class="px-4 py-2 bg-white border border-gray-300 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+        type="number"
+        placeholder="Price of stuff"
+        id="price"
+        style="margin-top: 20px"
+      />
+      <select
+        id="category"
+        class="px-4 py-2 bg-white border border-gray-300 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+      >
+        <option class="" value="Electronic">Electronic</option>
+        <option class="" value="Furniture">Furniture</option>
+      </select>
+
+      <button
+        class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-md"
+        type="button"
+        onclick="SaveStuff()"
+      >
+        Save
+      </button>
+
+      <table style="margin-top: 20px">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="result">
+          <tr>
+            <td>1</td>
+            <td>Wardrobe</td>
+            <td>Furniture</td>
+            <td>100.00</td>
+            <td>
+              <button class="" type="button">
+                <i class="fa-solid fa-pen-to-square text-white"></i>
+              </button>
+              <button class="" type="button">
+                <i class="fa-solid fa-trash text-white"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div
+        id="editModal"
+        class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden"
+      >
+        <div class="bg-white rounded-lg shadow-lg w-1/3">
+          <div class="flex justify-between items-center p-4 border-b">
+            <h3 class="text-lg font-semibold">Edit Stuff</h3>
+            <button id="closeModal" class="text-gray-600 hover:text-gray-900">
+              &times;
+            </button>
+          </div>
+          <div class="p-4">
+            <div class="flex flex-col">
+              <label for="">Name</label>
+              <input
+                class="px-4 py-2 bg-white border border-gray-300 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+                type="text"
+                placeholder="Name of stuff"
+                id="nameModal"
+              />
+              <label for="">Price</label>
+              <input
+                class="px-4 py-2 bg-white border border-gray-300 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+                type="number"
+                placeholder="Price of stuff"
+                id="priceModal"
+              />
+              <label for="">Category</label>
+              <select
+                id="categoryModal"
+                class="px-4 py-2 bg-white border border-gray-300 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+              >
+                <option class="hover:bg-indigo-600" value="Electronic">
+                  Electronic
+                </option>
+                <option class="hover:bg-indigo-600" value="Furniture">
+                  Furniture
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="flex justify-center p-4 border-t">
+            <button
+              onclick="SaveChanges()"
+              class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-700"
+            >
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="deleteModal"
+        class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden"
+      >
+        <div
+          class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full"
+        >
+          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div class="sm:flex sm:items-start">
+              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                  Delete Stuff
+                </h3>
+                <div class="mt-2">
+                  <p class="text-sm text-gray-500">
+                    Are you sure you want to delete this item?
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+            <button
+              type="button"
+              onclick="ConfirmDelete(currentId)"
+              class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+            >
+              Delete
+            </button>
+            <button
+              type="button"
+              id="cancelDelete"
+              class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
@@ -65,16 +184,26 @@
             const stuffs = response.data;
             let bucket = "";
             stuffs.forEach((stuff, index) => {
-              bucket += ` 
-              <tr>
-                <td>${index + 1}</td>
-                <td>${stuff.name}</td>
-                <td>${stuff.category}</td>
-                <td>${stuff.price}</td>
-                <td>
-                <button type="button">Delete</button>
-                </td>
-             </tr>`;
+              bucket += `
+                <tr>
+                  <td>${index + 1}</td>
+                  <td>${stuff.name}</td>
+                  <td>${stuff.category}</td>
+                  <td>${stuff.price}</td>
+                  <td class="text-center">
+                    <button class="bg-yellow-500 text-white py-1 px-2 rounded-md" type="button" onclick="EditStuff('${
+                      stuff.id
+                    }')">
+                      <i class="fa-solid fa-pen-to-square text-white"></i>
+                    </button>
+
+                    <button class="bg-red-700 text-white py-1 px-2 rounded-md" type="button" onclick="DeleteStuff('${
+                      stuff.id
+                    }')">
+                      <i class="fa-solid fa-trash text-white"></i>
+                    </button>
+                  </td>
+               </tr>`;
             });
             document.getElementById("result").innerHTML = bucket;
           })
@@ -96,16 +225,71 @@
           })
           .then((response) => {
             console.log(response);
-            GetStuff();
           })
           .catch((error) => {
             alert(error.message);
           });
       };
+
+      const EditStuff = async (id) => {
+        currentId = id;
+        await axios
+          .get(`http://localhost:3000/stuff/${id}`)
+          .then((response) => {
+            const stuff = response.data;
+            document.getElementById("editModal").classList.remove("hidden");
+            document.getElementById("nameModal").value = stuff.name;
+            document.getElementById("priceModal").value = stuff.price;
+            document.getElementById("categoryModal").value = stuff.category;
+          })
+          .catch((error) => {
+            alert(error.message);
+          });
+      };
+
+      const SaveChanges = async () => {
+        let name = document.getElementById("nameModal").value;
+        let price = document.getElementById("priceModal").value;
+        let category = document.getElementById("categoryModal").value;
+
+        await axios
+          .put(`http://localhost:3000/stuff/${currentId}`, {
+            name: name,
+            price: price,
+            category: category,
+          })
+          .then((response) => {
+            console.log(response);
+            document.getElementById("editModal").classList.add("hidden");
+          })
+          .catch((error) => {
+            alert(error.message);
+          });
+      };
+
+      const DeleteStuff = async (id) => {
+        currentId = id;
+        document.getElementById("deleteModal").classList.remove("hidden");
+      };
+
+      const ConfirmDelete = async (currentId) => {
+        await axios
+          .delete(`http://localhost:3000/stuff/${currentId}`)
+          .catch((error) => {
+            alert(error.message);
+          });
+      };
+
+      document
+        .getElementById("closeModal")
+        .addEventListener("click", function () {
+          document.getElementById("editModal").classList.add("hidden");
+        });
+      document
+        .getElementById("cancelDelete")
+        .addEventListener("click", function () {
+          document.getElementById("deleteModal").classList.add("hidden");
+        });
     </script>
   </body>
 </html>
-
-<!-- Tugas:
-1. Simpan & Pelajari Project
-2. Fitur Delete Kerjakan -->
