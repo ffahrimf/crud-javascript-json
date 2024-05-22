@@ -24,5 +24,19 @@
       "price": "442.00",
       "category": "Electronic"
     }
+  ],
+  "categories": [
+    {
+      "name": "Furniture",
+      "id": "7e6b"
+    },
+    {
+      "name": "Electronic",
+      "id": "db96"
+    },
+    {
+      "id": "44b6",
+      "name": "Food"
+    }
   ]
 }
