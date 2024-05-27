@@ -79,7 +79,7 @@
               total += parseFloat(stuff.price);
             });
             document.getElementById("result").innerHTML = bucket;
-            document.getElementById("total").innerText = `${total.toFixed(2)}`;
+            document.getElementById("total").innerText = `$${total.toFixed(2)}`;
           })
           .catch((error) => {
             alert(error.message);
@@ -105,11 +105,12 @@
             alert(error.message);
           });
       };
-      GetCategory();
+      GetCategory();  
 
       const SaveStuff = async () => {
         let name = document.getElementById("name").value;
-        let price = document.getElementById("price").value;
+        let parsingPrice = document.getElementById("price").value;
+        let price = parseFloat(parsingPrice).toFixed(2);
         let category = document.getElementById("category").value;
         await axios
           .post("http://localhost:3000/stuff", {
@@ -142,7 +143,7 @@
 
       const EditStuff = async (id) => {
         await axios
-          .get(`http://localhost:3001/stuff/${id}`)
+          .get(`http://localhost:3000/stuff/${id}`)
           .then((response) => {
             const stuff = response.data;
             document.getElementById("name").value = stuff.name;
@@ -160,10 +161,11 @@
       };
       const UpdateStuff = async (id) => {
         let name = document.getElementById("name").value;
-        let price = document.getElementById("price").value;
+        let parsingPrice = document.getElementById("price").value;
+        let price = parseFloat(parsingPrice).toFixed(2);
         let category = document.getElementById("category").value;
         await axios
-          .patch(`http://localhost:3001/stuff/${id}`, {
+          .patch(`http://localhost:3000/stuff/${id}`, {
             name: name,
             price: price,
             category: category,
@@ -173,7 +175,7 @@
             document.getElementById("name").value = "";
             document.getElementById("price").value = "";
             document.getElementById("save").innerText = "Save";
-            document
+            document  
               .getElementById("save")
               .setAttribute("onclick", `SaveStuff()`);
             GetStuff();

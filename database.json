@@ -23,6 +23,12 @@
       "name": "Laptop",
       "price": "442.00",
       "category": "Electronic"
+    },
+    {
+      "id": "818d",
+      "name": "Underwear",
+      "price": "3.00",
+      "category": "Clothes"
     }
   ],
   "categories": [
@@ -37,6 +43,10 @@
     {
       "id": "44b6",
       "name": "Food"
+    },
+    {
+      "id": "c2da",
+      "name": "Clothes"
     }
   ]
 }
