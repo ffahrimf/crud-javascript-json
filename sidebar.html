@@ -23,7 +23,7 @@
       data-drawer-toggle="sidebar-multi-level-sidebar"
       aria-controls="sidebar-multi-level-sidebar"
       type="button"
-      class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-antiflash focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-white focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
     >
       <span class="sr-only">Open sidebar</span>
       <svg
@@ -46,7 +46,7 @@
       aria-label="Sidebar"
     >
       <div class="h-full px-3 py-4 overflow-y-auto bg-mint dark:bg-rblack">
-        <h2 class="text-antiflash px-6 text-2xl mt-6 mb-12 font-poppins">
+        <h2 class="text-white px-6 text-2xl mt-6 mb-10 font-poppins">
           eStuffs
         </h2>
 
@@ -54,10 +54,10 @@
           <li class="">
             <a
               href="#"
-              class="flex items-center py-2 px-6 text-rblack rounded-lg dark:text-antiflash hover:bg-antiflash dark:hover:bg-gray-700 group"
+              class="flex items-center py-2 px-6 text-rblack rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group"
             >
               <svg
-                class="w-5 h-5 text-antiflash transition duration-75 dark:text-gray-400 group-hover:text-mint dark:group-hover:text-white"
+                class="w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-mint dark:group-hover:text-white"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -71,7 +71,7 @@
                 />
               </svg>
               <span
-                class="ms-3 text-xl font-poppins font-light text-antiflash group-hover:text-mint"
+                class="ms-3 text-xl font-poppins font-light text-white group-hover:text-mint"
                 >Dashboard</span
               >
             </a>
@@ -83,7 +83,7 @@
             > -->
             <a
               href="#"
-              class="flex items-center py-2 px-6 rounded-lg dark:text-antiflash bg-antiflash dark:bg-gray-700 group"
+              class="flex items-center py-2 px-6 rounded-lg dark:text-white bg-white dark:bg-gray-700 group"
             >
               <svg
                 class="flex-shrink-0 w-5 h-5 transition duration-75 dark:text-gray-400 text-mint dark:group-hover:text-white"
@@ -105,10 +105,10 @@
           <li>
             <a
               href="#"
-              class="flex items-center py-2 px-6 text-gray-900 rounded-lg dark:text-white hover:bg-antiflash dark:hover:bg-gray-700 group"
+              class="flex items-center py-2 px-6 text-gray-900 rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group"
             >
               <svg
-                class="flex-shrink-0 w-5 h-5 text-antiflash transition duration-75 dark:text-gray-400 group-hover:text-mint dark:group-hover:text-white"
+                class="flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-mint dark:group-hover:text-white"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -119,7 +119,7 @@
                 />
               </svg>
               <span
-                class="flex-1 ms-3 whitespace-nowrap text-xl font-poppins font-light text-antiflash group-hover:text-mint"
+                class="flex-1 ms-3 whitespace-nowrap text-xl font-poppins font-light text-white group-hover:text-mint"
                 >Inbox</span
               >
             </a>
@@ -128,46 +128,84 @@
       </div>
     </aside>
 
-    <div class="p-4 sm:ml-56 bg-mint">
-      <div class="p-4 bg-antiflash rounded-lg dark:border-gray-700">
-        <div class="flex justify-between items-center bg-red-500">
+    <div class="pt-4 pr-4 pb-4 sm:ml-56 bg-transparent">
+      <div class="py-4 px-7 bg-white rounded-lg dark:border-gray-700">
+        <div class="flex justify-between items-center mt-2">
           <div>
-            <div class="flex flex-col">
-              <h2>Stuff</h2>
-              <h5>15 stuffs found</h5>
+            <div class="flex flex-col font-poppins">
+              <h2 class="text-2xl font-bold text-gray-700">Stuff</h2>
+              <h5 class="text-sm text-gray-600">
+                <span>15</span> stuffs found
+              </h5>
             </div>
           </div>
           <div>
-            <div class="flex flex-row">
-              <i class="fa-solid fa-bell"></i>
-              <i class="fa-solid fa-search"></i>
-              <i class="fa-solid fa-user"></i>
-              <i class="fa-solid fa-chevron-down"></i>
+            <div class="flex flex-row gap-4">
+              <i
+                class="fa-regular fa-bell p-2 bg-slate-50 rounded-full text-gray-600"
+              ></i>
+              <i
+                class="fa-solid fa-search p-2 bg-slate-50 rounded-full text-gray-600"
+              ></i>
+              <div>
+                <i
+                  class="fa-solid fa-user p-2 bg-slate-50 rounded-md text-gray-600"
+                ></i>
+                <i
+                  class="fa-solid fa-chevron-down py-2 text-gray-600 text-xs"
+                ></i>
+              </div>
             </div>
           </div>
         </div>
-        <div class="flex justify-between items-center bg-purple-500">
+        <div class="flex justify-between items-center mt-6 font-poppins">
           <div>
-            <div class="flex flex-row gap-3">
-              <h3>Stuff</h3>
-              <h3>Stuff</h3>
-              <h3>Stuff</h3>
-              <h3>Stuff</h3>
+            <div class="flex flex-row gap-5">
+              <h3
+                class="font-medium text-gray-700 underline decoration-mint decoration-2 underline-offset-4"
+              >
+                All Stuffs
+              </h3>
+              <h3 class="text-gray-300 font-medium">Category</h3>
+              <h3 class="text-gray-300 font-medium">Request</h3>
+              <h3 class="text-gray-300 font-medium">Reject</h3>
             </div>
           </div>
           <div>
             <div class="flex flex-row gap-3">
-              <div class="flex items-center">
-                <i class="fa-solid fa-bell"></i>
+              <div class="flex items-center bg-slate-50 px-3 rounded-md gap-2">
+                <i class="fa-regular fa-calendar-days text-gray-600"></i>
                 <h4>31 Jun 2024</h4>
               </div>
-              <p>To</p>
               <div class="flex items-center">
-                <i class="fa-solid fa-bell"></i>
-                <h4>03 Aug 2024</h4>
+                <button
+                  class="text-white bg-mint hover:bg-frog py-1 px-3 rounded-md"
+                >
+                  Add Stuff
+                </button>
               </div>
             </div>
           </div>
+        </div>
+        <div
+          class="grid grid-cols-5 bg-slate-50 py-2 px-5 rounded-md mt-5 mb-5 font-semibold text-sm font-poppins text-gray-700"
+        >
+          <h3>No.</h3>
+          <h3>Name</h3>
+          <h3>Price</h3>
+          <h3>Category</h3>
+          <h3>Action</h3>
+        </div>
+
+        <div
+          id="result"
+          class="grid grid-cols-5 bg-transparent ring-2 ring-offset-1 ring-slate-100 py-4 px-5 rounded-md mt-6 mb-5 text-sm font-poppins text-gray-700"
+        >
+          <h3>1</h3>
+          <h3>Name</h3>
+          <h3>Price</h3>
+          <h3>Category</h3>
+          <h3>Action</h3>
         </div>
       </div>
     </div>
