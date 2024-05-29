@@ -128,8 +128,8 @@
       </div>
     </aside>
 
-    <div class="pt-4 pr-4 pb-4 sm:ml-56 bg-transparent">
-      <div class="py-4 px-7 bg-white rounded-lg dark:border-gray-700">
+    <div class="pt-4 pr-4 pb-4 sm:ml-56">
+      <div class="py-4 px-7 bg-white rounded-2xl dark:border-gray-700">
         <div class="flex justify-between items-center mt-2">
           <div>
             <div class="flex flex-col font-poppins">
@@ -141,35 +141,37 @@
           </div>
           <div>
             <div class="flex flex-row gap-4">
-              <i
-                class="fa-regular fa-bell p-2 bg-slate-50 rounded-full text-gray-600"
-              ></i>
-              <i
-                class="fa-solid fa-search p-2 bg-slate-50 rounded-full text-gray-600"
-              ></i>
-              <div>
+              <a href=""
+                ><i
+                  class="fa-regular fa-bell p-2 bg-slate-50 rounded-full text-gray-600"
+                ></i
+              ></a>
+              <a href=""
+                ><i
+                  class="fa-solid fa-search p-2 bg-slate-50 rounded-full text-gray-600"
+                ></i
+              ></a>
+              <a href="">
                 <i
                   class="fa-solid fa-user p-2 bg-slate-50 rounded-md text-gray-600"
                 ></i>
                 <i
                   class="fa-solid fa-chevron-down py-2 text-gray-600 text-xs"
                 ></i>
-              </div>
+              </a>
             </div>
           </div>
         </div>
         <div class="flex justify-between items-center mt-6 font-poppins">
-          <div>
-            <div class="flex flex-row gap-5">
-              <h3
-                class="font-medium text-gray-700 underline decoration-mint decoration-2 underline-offset-4"
-              >
-                All Stuffs
-              </h3>
-              <h3 class="text-gray-300 font-medium">Category</h3>
-              <h3 class="text-gray-300 font-medium">Request</h3>
-              <h3 class="text-gray-300 font-medium">Reject</h3>
-            </div>
+          <div class="flex flex-row gap-7">
+            <h3
+              class="font-semibold text-gray-700 underline decoration-frog decoration-2 underline-offset-4"
+            >
+              All Stuffs
+            </h3>
+            <h3 class="text-gray-300 font-medium">Category</h3>
+            <h3 class="text-gray-300 font-medium">Request</h3>
+            <h3 class="text-gray-300 font-medium">Reject</h3>
           </div>
           <div>
             <div class="flex flex-row gap-3">
@@ -179,7 +181,7 @@
               </div>
               <div class="flex items-center">
                 <button
-                  class="text-white bg-mint hover:bg-frog py-1 px-3 rounded-md"
+                  class="text-white bg-frog hover:bg-forest py-1 px-3 rounded-md"
                 >
                   Add Stuff
                 </button>
@@ -188,26 +190,63 @@
           </div>
         </div>
         <div
-          class="grid grid-cols-5 bg-slate-50 py-2 px-5 rounded-md mt-5 mb-5 font-semibold text-sm font-poppins text-gray-700"
+          class="grid grid-cols-12 bg-slate-50 py-2 px-5 rounded-md mt-8 mb-5 font-bold text-sm font-poppins text-gray-700"
         >
-          <h3>No.</h3>
-          <h3>Name</h3>
-          <h3>Price</h3>
-          <h3>Category</h3>
-          <h3>Action</h3>
+          <h3 class="col-start-1 col-span-1">No.</h3>
+          <h3 class="col-start-2 col-span-2">Id</h3>
+          <h3 class="col-start-4 col-span-3">Name</h3>
+          <h3 class="col-start-7 col-span-2">Price</h3>
+          <h3 class="col-start-9 col-span-2">Category</h3>
+          <h3 class="col-start-11 col-span-2">Action</h3>
         </div>
 
-        <div
-          id="result"
-          class="grid grid-cols-5 bg-transparent ring-2 ring-offset-1 ring-slate-100 py-4 px-5 rounded-md mt-6 mb-5 text-sm font-poppins text-gray-700"
-        >
-          <h3>1</h3>
-          <h3>Name</h3>
-          <h3>Price</h3>
-          <h3>Category</h3>
-          <h3>Action</h3>
+        <div id="result">
+          <!-- Berisi suntikan data -->
         </div>
       </div>
     </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      const GetStuff = async () => {
+        await axios
+          .get("http://localhost:3000/stuff")
+          .then((response) => {
+            console.log(response.data);
+            const stuffs = response.data;
+            let bucket = "";
+            stuffs.forEach((stuff, index) => {
+              bucket += `
+                <div
+                  class="grid grid-cols-12 bg-transparent ring-2 ring-offset-1 ring-slate-100 py-4 px-5 rounded-md mt-6 mb-5 text-sm font-poppins text-gray-700"
+                >
+                  <h3 class="col-start-1 col-span-1">${index + 1}</h3>
+                  <h3 class="col-start-2 col-span-2">#${stuff.id}</h3>
+                  <h3 class="col-start-4 col-span-3">${stuff.name}</h3>
+                  <h3 class="col-start-7 col-span-2">$${stuff.price}</h3>
+                  <h3 class="col-start-9 col-span-2">${stuff.category}</h3>
+                  <div class="col-start-11 col-span-2">
+                    <button
+                      class="text-white bg-frog hover:bg-forest py-1 px-3 rounded-md"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      class="text-white bg-frog hover:bg-forest py-1 px-3 rounded-md"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              `;
+            });
+            document.getElementById("result").innerHTML = bucket;
+          })
+          .catch((error) => {
+            alert(error.message);
+          });
+      };
+      GetStuff();
+    </script>
   </body>
 </html>
