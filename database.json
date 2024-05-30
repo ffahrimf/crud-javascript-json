@@ -25,28 +25,10 @@
       "category": "Electronic"
     },
     {
-      "id": "818d",
       "name": "Underwear",
-      "price": "3.00",
-      "category": "Clothes"
-    },
-    {
-      "id": "7y8k",
-      "name": "Bjorts",
-      "price": "7.00",
-      "category": "Clothes"
-    },
-    {
-      "id": "1d9l",
-      "name": "Knitwear",
-      "price": "6.00",
-      "category": "Clothes"
-    },
-    {
-      "id": "g7jk",
-      "name": "Air Conditioner",
-      "price": "542.00",
-      "category": "Electronic"
+      "price": "4.00",
+      "category": "Clothes",
+      "id": "818d"
     }
   ],
   "categories": [
@@ -63,7 +45,7 @@
       "name": "Food"
     },
     {
-      "id": "c2da",
+      "id": "80e6",
       "name": "Clothes"
     }
   ]
