@@ -171,19 +171,25 @@
             >
               All Stuffs
             </h3>
-            <h3 class="text-gray-300 font-medium"><a href="">Category</a></h3>
-            <h3 class="text-gray-300 font-medium"><a href="">Request</a></h3>
-            <h3 class="text-gray-300 font-medium"><a href="">Reject</a></h3>
+            <h3 class="text-gray-300 font-medium"><a href="category.html" target="_blank">Category</a></h3>
+            <h3 class="text-gray-300 font-medium"><a href="#">Request</a></h3>
+            <h3 class="text-gray-300 font-medium"><a href="#">Reject</a></h3>
           </div>
           <div>
-            <div class="flex flex-row gap-3">
-              <div class="flex items-center bg-slate-50 px-3 rounded-md gap-2 dark:text-stone dark:bg-gray-900 dark:hover:bg-black">
+            <div class="flex flex-row gap-3 ">
+              <button type="button" class="flex items-center bg-slate-50 px-3 rounded-md gap-2 dark:text-stone dark:bg-gray-900 dark:hover:bg-black">
                 <i class="fa-regular fa-calendar-days text-gray-600"></i>
                 <h4>31 Jun 2024</h4>
-              </div>
+              </button>
+              <span class="flex items-center font-medium text-sm">To</span>
+              <button type="button" class="flex items-center bg-slate-50 px-3 rounded-md gap-2 dark:text-stone dark:bg-gray-900 dark:hover:bg-black">
+                <i class="fa-regular fa-calendar-days text-gray-600"></i>
+                <h4>16 Jul 2024</h4>
+              </button>
+              
               <div class="flex items-center">
                 <button
-                  class="text-white bg-frog dark:bg-mountain hover:bg-forest transition duration-300 py-1 px-3 rounded-md"
+                  class="text-white bg-mint dark:bg-frog hover:bg-forest transition duration-300 py-1 px-3 rounded-md"
                   onclick="AddStuff()"
                 >
                   Add Stuff
@@ -206,6 +212,11 @@
         <div id="result">
           <!-- Berisi suntikan data -->
         </div>
+
+<div class="mt-7">
+  <h3 class="font-poppins font-medium text-lg text-gray-700">Total: <span id="total">$0.00</span></h3>
+</div>
+
       </div>
     </div>
 
@@ -493,6 +504,7 @@
             console.log(response.data);
             const stuffs = response.data;
             let bucket = "";
+            let total = 0;
             stuffs.forEach((stuff, index) => {
               bucket += `
                 <div
@@ -511,7 +523,7 @@
                       Edit
                       </button>
                       <button
-                      class="text-white bg-danger hover:bg-red-700 transition duration-300 py-1 px-3 rounded-md font-medium"
+                      class="text-white bg-frog hover:bg-forest transition duration-300 py-1 px-3 rounded-md font-medium"
                       onclick="DeleteStuff('${stuff.id}')"
                       >
                       Delete
@@ -519,8 +531,10 @@
                   </div>
                 </div>
               `;
+              total += parseFloat(stuff.price);
             });
             document.getElementById("result").innerHTML = bucket;
+            document.getElementById("total").innerText = `$${total.toFixed(2)}`;
           })
           .catch((error) => {
             alert(error.message);
